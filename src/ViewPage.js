@@ -41,12 +41,12 @@ export default function ViewPage() {
                 {fetchError && (<p>{fetchError}</p>)}
                 {data && (<>
                     {data.map(item => (
-                        <table>
+                        <tr>
                         <th>{item.id} </th>
                         <th>{item.created_at} </th>
                         <th>{item.piemers_1} </th>
                         <th>{item.abcd} </th>
-                        </table>
+                        </tr>
                     ))}
                 </>)}
 

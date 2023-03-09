@@ -26,10 +26,13 @@ export default function InputPage() {
         if (data){
             console.log(data);
             setformError(null);
+            setAbcd('');
+            setPiemers('');
+            e.target.reset();
+            abcd.current.value="";
+               
         }
-                
-
-    }
+        }
    
     return (
         <div>
@@ -37,12 +40,14 @@ export default function InputPage() {
             <input type="text"
              placeholder='Input' 
              id="abcd"
+ 
             //  nomaini
              value={abcd}
              onChange={(e) => setAbcd(e.target.value)}/>
-            <input type="text"
-             placeholder='Input'
-             id="piemers_1" 
+            <input
+             placeholder='piemers_1'
+             id="piemers_1"
+             type="text" 
             //  nomaini
              value={piemers_1}
              onChange={(e) => setPiemers(e.target.value)}/>
@@ -50,6 +55,7 @@ export default function InputPage() {
             <button type="submit">pievienot</button>
             {formError && <p>{formError}</p>}
             </form>
+
         </div>
        
     );
