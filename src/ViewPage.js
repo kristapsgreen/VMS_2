@@ -27,16 +27,33 @@ export default function ViewPage() {
 },[])
     return (
         <div>
+            <table>
+            <tr>
+                <th>id</th>
+                <th>time</th>
+                <th>piemers_1</th>
+                <th>abcd</th>
+            </tr>
+            </table>
             {fetchError && <p>{fetchError}</p>}
             {data && (
-                <div>
-                 {data.map((item) => (
-                    <p>{item.abcd}</p>
-                 ))}
-    
-                </div>
-            )}
-            {console.log(data)}
+            <div>
+                {fetchError && (<p>{fetchError}</p>)}
+                {data && (<>
+                    {data.map(item => (
+                        <table>
+                        <th>{item.id} </th>
+                        <th>{item.created_at} </th>
+                        <th>{item.piemers_1} </th>
+                        <th>{item.abcd} </th>
+                        </table>
+                    ))}
+                </>)}
+
+
+
+            </div>
+                )}
         </div>
-    );
+    )
 };
