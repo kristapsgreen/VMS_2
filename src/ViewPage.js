@@ -8,6 +8,8 @@ export default function ViewPage() {
     const [fetchError, setFetchError] = React.useState(null);
     const [data, setData] = React.useState(null);
 
+   
+
     React.useEffect(() => {
         const fetchData = async () => {
             const {data, error}= await supabase
@@ -27,7 +29,7 @@ export default function ViewPage() {
 },[])
     return (
         <div>
-            <table>
+            <table className='tabula'>
             <tr>
                 <th>id</th>
                 <th>time</th>
@@ -38,6 +40,7 @@ export default function ViewPage() {
             {fetchError && <p>{fetchError}</p>}
             {data && (
             <div>
+                <table>
                 {fetchError && (<p>{fetchError}</p>)}
                 {data && (<>
                     {data.map(item => (
@@ -49,7 +52,7 @@ export default function ViewPage() {
                         </tr>
                     ))}
                 </>)}
-
+            </table>
 
 
             </div>

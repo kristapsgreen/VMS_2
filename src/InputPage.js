@@ -38,16 +38,15 @@ export default function InputPage() {
         <div>
             <form onSubmit={handleSubmit}>
             <input type="text"
-             placeholder='Input' 
+             placeholder='abcd' 
              id="abcd"
  
             //  nomaini
              value={abcd}
              onChange={(e) => setAbcd(e.target.value)}/>
-            <input
-             placeholder='piemers_1'
-             id="piemers_1"
-             type="text" 
+            <input type="text"
+             placeholder='Input'
+             id="piemers_1" 
             //  nomaini
              value={piemers_1}
              onChange={(e) => setPiemers(e.target.value)}/>
