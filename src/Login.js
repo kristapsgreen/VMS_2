@@ -1,66 +1,43 @@
 import React from 'react';
-import ReactDOM from'react-dom';
 import './index.css';
-import { supabase } from './supabaseClient'
+import supabase  from './supabaseClient.js'
+import { SupabaseClient, createClient } from '@supabase/supabase-js'
+import SignOut from './SignOut.js'
 
-// export default function Auth() {
-//     const [loading, setLoading] = React.useState(false)
-//     const [email, setEmail] = React.useState('')
-
-//     const handleLogin = async (e) => {
-//         e.preventDefault()
-    
-//         try {
-//           setLoading(true)
-//           const { data, error } = await supabase.auth.signInWithPassword({
-//             email: 'example@email.com',
-//             password: 'example-password',
-//           })
-//           if (error) throw error
-//           alert('Check your email for the login link!')
-//         } catch (error) {
-//           alert(error.error_description || error.message)
-//         } finally {
-//           setLoading(false)
-//         }
-//       }
-
-//       return(
-//         <div>
-//             <h1>Ielogoties</h1>
-//             {loading ? (
-//           'Nosūta datus'
-//         ) : (
-//           <form onSubmit={handleLogin}>
-//             <label htmlFor="email">Email</label>
-//             <input
-//               id="email"
-//               className="inputField"
-//               type="email"
-//               placeholder="Your email"
-//               value={data.email}
-//             />
-//              <input
-//               id="email"
-//               className="inputField"
-//               type="email"
-//               placeholder="Your email"
-//               value={data.password}
-//             />
-//             <button className="button block" aria-live="polite">
-//               Send magic link
-//             </button>
-//           </form>
-//         )}
-//         </div>
-//       )
-//     }
 
 export default function Login() {
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+          })
+        if (error) {
+          alert(error.message);
+        } else {
+          alert('Pierakstijies veiksmīgi');
+          console.log(SupabaseClient)
+          // TODO: Redirect to the user's dashboard or home page
+        }
+    }
     return (
         <div>
-            <input type="text" placeholder='Username' />
-            <input type="text" placeholder='Password' />
+            <form onSubmit={handleLogin}>
+            <input type="email" 
+            placeholder='E-pasts'
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}/>
+            <input type="password"
+             placeholder='Parole'
+             value={password} 
+             onChange={(e) => setPassword(e.target.value)} />
+             <button type='submit'>Ielogietis</button>
+             </form>
+            {"\n"}
+            <SignOut />
         </div>
     );
-};
+}

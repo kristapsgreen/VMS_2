@@ -4,12 +4,14 @@ import './index.css';
 import supabase from './supabaseClient.js';
 
 export default function InputPage() {
+    //izveidoju hookus priekš katras lauciņa vērtības un priekš kļūdas
     const [abcd,setAbcd] = React.useState('')
     const [piemers_1,setPiemers] = React.useState('')
     const [formError, setformError] = React.useState(null)
 
     const handleSubmit = async (e) =>{
-        e.preventDefault();
+        //EPREVENT DEFAULT neļauj mājaslapai atjaunoties, bet tad arī lodziņos ievadītais teksts nepazudīs, kas nav pārāk parocīgi 
+        // e.preventDefault();
         // nomaini
         if(!abcd || !piemers_1){
             setformError("Aizpildiet lauciņus");
@@ -19,10 +21,11 @@ export default function InputPage() {
         const { data,   error } = await supabase
             .from('Noliktava')
             .insert([{abcd , piemers_1}])
-
+        //ja ir kļūda no supabase, izvadi to 
         if(error){
             console.log(error);
         }
+        // ja ir dati, izvadi tos un pēc tam lauciņu vērtību pārvērt par tukšumu
         if (data){
             console.log(data);
             setformError(null);

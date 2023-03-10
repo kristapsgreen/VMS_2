@@ -7,6 +7,7 @@ import NoPage from './NoPage.js';
 import InputPage from './InputPage.js';
 import ViewPage from './ViewPage.js'; 
 import './index.css';
+import NewUser from './NewUser';
 
 
 export default function App(){
@@ -18,6 +19,8 @@ export default function App(){
         <Route index element={<Login />} />
         <Route path="Viewpage" element={<ViewPage />} />
         <Route path="Inputpage" element={<InputPage />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="NewUser" element={<NewUser />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
