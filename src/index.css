@@ -88,7 +88,7 @@ body {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
   }
   
   .newuser-form-button:hover {
@@ -164,7 +164,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    height: 8vh;
   }
   
   .signout-button {
