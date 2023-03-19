@@ -19,7 +19,7 @@ export default function Layout() {
           </li>
           <li>
             <Link to="/NewUser" className="nav-link">
-              Pierakstīties
+              Reģistrēties
             </Link>
           </li>
           <li>
