@@ -1,35 +1,35 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import React from "react";
-import './index.css';
-
-
+import "./index.css";
 
 export default function Layout() {
-
-    return (
-      <div>
-          <nav>
-          <ul>
-            <li>
-              <Link to="/ViewPage">View database</Link>
-            </li>
-            <li>
-              <Link to="/InputPage">Input data</Link>
-            </li>
-            <li>
-              <Link to="/NewUser">Pierakstīties</Link>
-            </li>
-               <li>
-                {console.log("isnt logged in")}
-              <Link to="/Login">Login/Logout</Link>
-            </li>
-          </ul>
-        </nav>
-        <Outlet />
-              {console.log("is this working")}
-        </div>
-
-    
-    )
-    
+  return (
+    <div className="layout-container">
+      <nav className="navigation">
+        <ul className="nav-links">
+          <li>
+            <Link to="/ViewPage" className="nav-link">
+              View database
+            </Link>
+          </li>
+          <li>
+            <Link to="/InputPage" className="nav-link">
+              Ievadīt datus
+            </Link>
+          </li>
+          <li>
+            <Link to="/NewUser" className="nav-link">
+              Pierakstīties
+            </Link>
+          </li>
+          <li>
+            <Link to="/Login" className="nav-link">
+              Ielogoties/izlogoties
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <Outlet />
+    </div>
+  );
 };

@@ -1,13 +1,237 @@
-nav {
-    flex-wrap: wrap;
-    text-decoration: none;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1f1f1f;
 }
 
-table{
-    width:100%;
-}
-.tabula{
-    font-weight: lighter;
-    margin: auto;
+.layout-container {
+    display: flex; /* display the layout container as a flex container */
+    flex-direction: column; /* display the child elements in a column */
+    min-height: 100vh; /* set the minimum height of the container to 100% of the viewport */
+  }
+  
+  .navigation {
+    display: flex; /* display the links in a flex container */
+    justify-content: space-evenly; /* distribute the links evenly along the container's main axis */
+    align-items: center; /* vertically center the links */
+    padding: 16px; /* add padding to the navigation container */
+    flex-direction: row; /* display the links horizontally */
+  }
+  
+  .nav-links {
+    display: flex; /* display the navigation links as a flex container */
+    list-style: none; /* noņemt punktu saraksta simbolu */
+    margin: 0; /* noņemt noklusējuma atkāpi */
+    padding: 0; /* noņemt noklusējuma atkāpi */
+  }
+  
+  .nav-link {
+    color: #ffffff; /* iestatiet saites krāsu uz baltu */
+    text-decoration: none; /* noņemt pasvītrojumu no saitēm */
+    padding: 8px; /* pievienot atkāpi saitēm */
+    transition: all 0.3s ease-in-out; /* pievienot pārejas efektu saitēm */
+  }
+  
+  .nav-link:hover {
+    color: #1f1f1f; /* iestatiet saites krāsu uz melnu uz pārvilkšanu */
+    background-color: #ffffff; /* iestatiet fona krāsu */
+  }
+  .newuser-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+  }
+  
+  .newuser-heading {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color:white;
+  }
+  
+  .newuser-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+  }
+  
+  .newuser-form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    color:white;
+  }
+  
+  .newuser-form-item label {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .newuser-form-item input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  .newuser-form-button {
+    background-color: #2f9e4d;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .newuser-form-button:hover {
+    background-color: #238c3d;
+  }
 
-}
+  .view-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .table {
+    border-collapse: collapse;
+    margin-top: 30px;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  tbody{
+    color: #f0f0f0;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .form-input {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-size: 16px;
+  }
+  
+  .form-submit-btn {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2f9e4d;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .form-error {
+    color: red;
+    margin: 10px;
+  }
+  .signout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .signout-button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signout-button:hover {
+    background-color: #ff6659;
+  }
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .login-label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color:white;
+  }
+  
+  .login-input {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .login-button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: #2f9e4d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .login-button:hover {
+    background-color: #258b41;
+  }
+  
+  .login-button:active {
+    background-color: #2f9e4d;
+  }
+  
+  .login-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+  }
+  
+  .login-button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+  }  
