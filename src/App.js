@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
 import Layout from './Layout';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,6 +7,8 @@ import InputPage from './InputPage.js';
 import ViewPage from './ViewPage.js'; 
 import './index.css';
 import NewUser from './NewUser';
+
+// lai nepazaudētu svarīgi supabase - DROP FUNCTION IF EXISTS handle_new_user cascade; 
 
 
 export default function App(){

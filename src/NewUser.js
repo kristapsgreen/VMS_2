@@ -2,7 +2,6 @@ import React from 'react';
 import './index.css';
 import supabase from './supabaseClient.js';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
-import { Auth } from '@supabase/auth-ui-react';
 
 export default function NewUser() {
   const [email, setEmail] = React.useState('');
