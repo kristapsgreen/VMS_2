@@ -3,6 +3,7 @@ import './index.css';
 import supabase from './supabaseClient.js';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
+
 export default function NewUser() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -24,7 +25,7 @@ export default function NewUser() {
 
   return (
     <div className="newuser-container">
-      <h1 className="newuser-heading">Pierakstīties</h1>
+      <h1 className="newuser-heading">Reģistrēties</h1>
       <form className="newuser-form" onSubmit={handleLogin}>
         <div className="newuser-form-item">
           <label htmlFor="email">Epasts:</label>
@@ -34,7 +35,7 @@ export default function NewUser() {
           <label htmlFor="password">Parole:</label>
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button className="newuser-form-button" type="submit">Ielogoties</button>
+        <button className="newuser-form-button" type="submit">reģistrēties</button>
       </form>
     </div>
   )
