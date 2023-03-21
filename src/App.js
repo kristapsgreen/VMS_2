@@ -7,6 +7,7 @@ import InputPage from './InputPage.js';
 import ViewPage from './ViewPage.js'; 
 import './index.css';
 import NewUser from './NewUser';
+import PasswordChange from './passwordChange';
 
 // lai nepazaudētu svarīgi supabase - DROP FUNCTION IF EXISTS handle_new_user cascade; 
 
@@ -23,6 +24,7 @@ export default function App(){
         <Route path="Login" element={<Login />} />
         <Route path="NewUser" element={<NewUser />} />
         <Route path="*" element={<NoPage />} />
+        <Route path="passwordChange" element={<PasswordChange />} />
       </Route>
     </Routes>
   </BrowserRouter>

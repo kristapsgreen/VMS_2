@@ -3,12 +3,13 @@ import supabase from './supabaseClient.js';
 import SignOut from './SignOut.js';
 import './index.css';
 
+
 export default function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
+
   const handleLogin = async (e) => {
-    e.preventDefault();
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -17,7 +18,6 @@ export default function Login() {
       alert(error.message);
     } else {
       alert('Pierakstijies veiksmīgi');
-      // TODO: Redirect to the user's dashboard or home page
     }
   };
 

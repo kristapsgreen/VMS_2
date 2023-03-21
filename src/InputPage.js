@@ -1,66 +1,82 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import supabase from './supabaseClient.js';
 
 export default function InputPage() {
-  const [abcd, setAbcd] = React.useState('');
-  const [piemers_1, setPiemers] = React.useState('');
+  const [barcode, setBarcode] = React.useState('');
+  const [komentars, setKomentars] = React.useState('');
   const [formError, setformError] = React.useState(null);
-
+  const [data, setData] = React.useState();
+  const [error, setError] = React.useState();
+  
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-
-    if (!abcd || !piemers_1) {
+    e.preventDefault();
+    if (!komentars || !barcode) {
       setformError('Aizpildiet lauciņus');
       return;
     }
-
-    const { data, error } = await supabase.from('Noliktava').insert([
-      {
-        abcd,
-        piemers_1,
-      },
-    ]);
-
-    if (error) {
-      console.log(error);
-    }
-
-    if (data) {
-      console.log(data);
+    const bararray = barcode.split(" ");
+    const { data: { user } } = await supabase.auth.getUser()
+    try {
+      await Promise.all(bararray.map(async (item) => {
+        let modelis = item.substr(0, 5);
+        let optiskaisStiprums = item.substr(7, 3);
+        let precesKods = item.substr(10, 10);
+        let menesis = item.substr(20, 2);
+        let gads = item.substr(22, 2);
+        const { data, error } = await supabase.from('prece').insert([
+          {
+            svitrkods: item,
+            modelis: modelis,
+            optiskaisStiprums: optiskaisStiprums,
+            precesKods: precesKods,
+            derigumaTerminsGads: gads,
+            derigumaTerminsMenesis: menesis,
+            registretajaEpasts:user.email,
+          }
+        ]);
+        if (error) {
+          throw error;
+        }
+        return data;
+      }));
       setformError(null);
-      setAbcd('');
-      setPiemers('');
+      setBarcode('');
+      setKomentars('');
       e.target.reset();
-      abcd.current.value = '';
+      alert('Dati pievienoti veiksmīgi!');
+    } catch (error) {
+      setError(error);
+      setData(null);
     }
-  };
-
+  }
+  
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="abcd"
-          id="abcd"
-          className="form-input"
-          value={abcd}
-          onChange={(e) => setAbcd(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Input"
-          id="piemers_1"
-          className="form-input"
-          value={piemers_1}
-          onChange={(e) => setPiemers(e.target.value)}
-        />
-        <button type="submit" className="form-submit-btn">
-          pievienot
-        </button>
-        {formError && <p className="form-error">{formError}</p>}
-      </form>
+    <form onSubmit={handleSubmit}>
+    <input
+    type="text"
+    placeholder="Svītrkodi"
+    id="barcode"
+    className="form-input"
+    value={barcode}
+    onChange={(e) => setBarcode(e.target.value)}
+    />
+    <input
+    type="text"
+    placeholder="komentārs"
+    id="komentars"
+    className="form-input"
+    value={komentars}
+    onChange={(e) => setKomentars(e.target.value)}
+    />
+    <button type="submit" className="form-submit-btn">
+    pievienot
+    </button>
+    {formError && <p className="form-error">{formError}</p>}
+    </form>
     </div>
-  );
-}
+    );
+  }
+  
+  
