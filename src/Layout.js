@@ -31,11 +31,6 @@ export default function Layout() {
               </Link>
             </li>
             <li>
-              <Link to="/NewUser" className="nav-link">
-                Reģistrēties
-              </Link>
-            </li>
-            <li>
               <Link to="/Login" className="nav-link">
                 Ielogoties/izlogoties
               </Link>

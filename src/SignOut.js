@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.css';
 import supabase from './supabaseClient.js';
-import { SupabaseClient, createClient } from '@supabase/supabase-js';
 
 export default function SignOut() {
   const handleLogOut = async (e) => {

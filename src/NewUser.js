@@ -26,6 +26,7 @@ export default function NewUser() {
   return (
     <div className="newuser-container">
       <h1 className="newuser-heading">Reģistrēties</h1>
+      
       <form className="newuser-form" onSubmit={handleLogin}>
         <div className="newuser-form-item">
           <label htmlFor="email">Epasts:</label>
@@ -37,6 +38,7 @@ export default function NewUser() {
         </div>
         <button className="newuser-form-button" type="submit">reģistrēties</button>
       </form>
+      <p className='newuser-note'>Reģistrācija var nebūt pieejama, ja vien Administrators to nav atļāvis</p>
     </div>
   )
 }

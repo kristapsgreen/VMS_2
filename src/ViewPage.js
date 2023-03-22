@@ -7,15 +7,14 @@ export default function ViewPage() {
   const [fetchError, setFetchError] = React.useState(null);
   const [data, setData] = React.useState(null);
   const [numurs, setNumurs] = React.useState(null);
-  const [registreja, setRegistretaja] = React.useState(null);
+  const [registreja, setRegistreja] = React.useState(null);
 
   const fetchData = async () => {
     let query = supabase.from('prece').select();
     if (numurs) {
-      query = query.like('precesKods', '%'+numurs+'%');
-    }
-    if (registreja) {
-      query = query.like('precesKods', '%'+registreja+'%');
+      query = query.filter('precesKods', 'ilike', `%${numurs}%`);
+    } else if (registreja) {
+      query = query.filter('registretajaEpasts', 'ilike', `%${registreja}%`);
     }
     const { data, error } = await query;
 
@@ -23,9 +22,7 @@ export default function ViewPage() {
       setFetchError('Could not fetch data');
       setData(null);
       console.log(error);
-    }
-
-    if (data) {
+    } else {
       setData(data);
       setFetchError(null);
     }
@@ -33,25 +30,25 @@ export default function ViewPage() {
 
   React.useEffect(() => {
     fetchData();
-  }, [numurs]);
+  }, [numurs, registreja]);
 
   return (
     <div className="view-page">
       <div className="view-parameters">
-      <input
-        type="text"
-        placeholder="Preces numurs"
-        className="form-input"
-        value={numurs}
-        onChange={(e) => setNumurs(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Reģistrētāja Epasts"
-        className="form-input"
-        value={registreja}
-        onChange={(e) => setRegistretaja(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Preces numurs"
+          className="form-input"
+          value={numurs}
+          onChange={(e) => setNumurs(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Reģistrētāja Epasts"
+          className="form-input"
+          value={registreja}
+          onChange={(e) => setRegistreja(e.target.value)}
+        />
       </div>
       <table className="table">
         <thead>
@@ -76,7 +73,10 @@ export default function ViewPage() {
                 <td>{item.precesKods}</td>
                 <td>{item.derigumaTerminsMenesis}/{item.derigumaTerminsGads}</td>
                 <td>{item.registretajaEpasts}</td>
-                <td><Delete key={item.precesNr}  name={item.precesNr} onDeleteSuccess={fetchData} /></td>
+                <td>
+                  <Delete key={item.precesNr} name={item.precesNr} onDeleteSuccess={fetchData} /> 
+                  {/* <Review key={item.precesNr} name={item.precesNr} onDeleteSuccess={fetchData}/> */}
+                  </td>
               </tr>
             ))}
         </tbody>
