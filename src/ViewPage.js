@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import supabase from './supabaseClient.js';
 import Delete from './Delete.js';
+import Review from './Review';
 
 export default function ViewPage() {
   const [fetchError, setFetchError] = React.useState(null);
@@ -75,7 +76,7 @@ export default function ViewPage() {
                 <td>{item.registretajaEpasts}</td>
                 <td>
                   <Delete key={item.precesNr} name={item.precesNr} onDeleteSuccess={fetchData} /> 
-                  {/* <Review key={item.precesNr} name={item.precesNr} onDeleteSuccess={fetchData}/> */}
+                  <Review key={item.precesNr} name={item.precesNr} onDeleteSuccess={fetchData}/>
                   </td>
               </tr>
             ))}
