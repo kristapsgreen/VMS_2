@@ -10,6 +10,7 @@ export default function Login() {
 
 
   const handleLogin = async (e) => {
+    e.preventDefault();
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -18,6 +19,7 @@ export default function Login() {
       alert(error.message);
     } else {
       alert('Pierakstijies veiksmīgi');
+      window.location.reload();
     }
   };
 
